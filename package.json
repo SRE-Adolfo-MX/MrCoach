@@ -1,5 +1,25 @@
 {
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.1.2"
+  },
+  "name": "mrcoach",
+  "description": "Message from login 2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SRE-Adolfo-MX/MrCoach.git"
+  },
+  "author": "@SRE-ADOLFO-MX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SRE-Adolfo-MX/MrCoach/issues"
+  },
+  "homepage": "https://github.com/SRE-Adolfo-MX/MrCoach#readme"
 }

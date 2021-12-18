@@ -1,1 +1,1 @@
-# MrCoach project
+# MrCoach

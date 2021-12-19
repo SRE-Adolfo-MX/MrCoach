@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const db = require("./lib/db");
+const apiRouter = require("./Routes");
 //app.listen(port);
 
+apiRouter(app);
 
 app.listen(port, ()=>{
 

@@ -8,6 +8,13 @@ const get = async () => {
     return allUsersDetail;
 };
 
+const getById = async (userID) => {
+    const user = await userDetail.findById(userID).exec();
+
+    return user;
+};
+
+  
 const create = async (userData) => {
     const {userName, lastName, password, age, birthDay, gender, email, mobileNumber, state, city, avatar} = userData;
     const id = MUUID.v1();
@@ -39,4 +46,5 @@ const create = async (userData) => {
 module.exports = {
     get,
     create,
-  };
+    getById,
+};

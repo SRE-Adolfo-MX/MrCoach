@@ -2,12 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema= new Schema({
-    uuid:{
-        type: String,
-        maxlength:10,
-        minlength: 1,
-     
-    },
+
     idChat: {
         type:Number,
         maxlength:4,
@@ -28,7 +23,7 @@ const schema= new Schema({
         
     },
     dateChat: {
-        timestamp: true
+        timestamps: { currentTime: () => Math.floor(Date.now() / 1000) }
 
         
     },

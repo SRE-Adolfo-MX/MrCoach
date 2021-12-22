@@ -47,10 +47,10 @@ router.patch("/:id", async (req, res) => {
         city,
         avatar,
     } = req.body;
-
+    
+    let checkUser = await users.getById(id)
     let newUser = {}
 
-    if(account) newUser = {...newUser, account}
     if(name) newUser = {...newUser, name}
     if(lastName) newUser = {...newUser, lastName}
     if(age) newUser = {...newUser, age}
@@ -64,18 +64,23 @@ router.patch("/:id", async (req, res) => {
     if(city) newUser = {...newUser, city}
     if(avatar) newUser = {...newUser, avatar}
 
-    let updatedUser = await users.updateUser(id, newUser)
+    if(checkUser.account === 1) { 
 
-    if(account === 2) {
-        const coachCreated = await coach.create(accountDetails);
+        if(account && account !== 1) {
+            newUser = {...newUser, account}
 
-        updatedUser = {...updatedUser, accountDetails: coachCreated}
-    } else if (account === 3) {
-        const studentCreated = await student.create(accountDetails);
- 
-        updatedUser = {...updatedUser, accountDetails: studentCreated};
+            if(account === 2) {
+                const coachCreated = await coach.create(accountDetails);     
+                updatedUser = {...updatedUser, accountDetails: coachCreated}
+            } else if (account === 3) {
+                const studentCreated = await student.create(accountDetails);
+                updatedUser = {...updatedUser, accountDetails: studentCreated};
+            };
+        };
     };
 
+    let updatedUser = await users.updateUser(id, newUser)
+    
     res.json({
         ok: true,
         message: `User updated successfully!`,

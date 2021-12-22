@@ -8,7 +8,7 @@ const apiRouter = require("./Routes");
 
 app.use(express.json())
 
-// apiRouter(app);
+apiRouter(app);
 
 app.listen(port, ()=>{
 

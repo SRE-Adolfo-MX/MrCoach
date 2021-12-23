@@ -2,14 +2,20 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema= new Schema({
-   
+    uuid:{
+        type: String,
+        required:true,
+        maxlength:10,
+        minlength: 1,
+
+    },
     idUser: {
         type:String,
          maxlength:10,
         minlength: 1,
     },
     dateNotifications: {
-      timestamps: { currentTime: () => Math.floor(Date.now() / 1000) }
+        timestamp: true
     },
     comments: {
         type:String,

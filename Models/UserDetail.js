@@ -2,7 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema= new Schema({
-   
+    uuid:{
+        type: String,
+        maxlength:10,
+        minlength: 1,
+
+    },
     id: {
         type:String,
          maxlength:10,

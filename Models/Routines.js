@@ -2,7 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema= new Schema({
-    
+    uuid:{
+        type: String,
+        maxlength:10,
+        minlength: 1,
+
+    },
     idRoutine: {
         type:String,
          maxlength:10,
@@ -24,14 +29,14 @@ const schema= new Schema({
         minlength: 1,
     },
     dateCreation: {
-         timestamps: { currentTime: () => Math.floor(Date.now() / 1000) }
+         timestamp: true
 
     },
     initialDate: {
-       timestamps: { currentTime: () => Math.floor(Date.now() / 1000) }
+       timestamp: true
     },
     finishDate: {
-        timestamps: { currentTime: () => Math.floor(Date.now() / 1000) }
+        timestamp: true
     },
     typeRoutine: {
       type:String,

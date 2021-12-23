@@ -1,9 +1,9 @@
-const { response } = require("express");
+// const { response } = require("express");
 const express = require("express");
 const app = express();
 const port = 8000;
 const db = require("./lib/db");
-const apiRouter = require("./routes");
+const apiRouter = require("./Routes");
 //app.listen(port);
 
 app.use(express.json())

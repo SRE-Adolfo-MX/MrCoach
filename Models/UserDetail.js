@@ -3,17 +3,17 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     uuid: {
-        type: String,
-        maxlength:10,
-        minlength: 1,
-
-    },
-    id: {
         type:String,
-        maxlength:10,
+        maxlength:150,
         minlength: 1,
     },
-    name: {
+    userName: {
+        type: String,
+        maxlength:40,
+        minlength: 1,
+    },
+    firstName: {
+        type: String,
         maxlength:40,
         minlength: 1,
     },
@@ -28,8 +28,9 @@ const schema = new Schema({
         minlength: 1,
     },
     birthDay: {
-        timestamp: true
-
+        type: String,
+        maxlength: 11,
+        minlength: 10,
     },
     gender: {
         type:String,
@@ -42,7 +43,7 @@ const schema = new Schema({
         minlength: 1,
     },
     initialTime: {
-        timestamp: true
+        type: Date,
     },
     status: {
         type:Boolean,

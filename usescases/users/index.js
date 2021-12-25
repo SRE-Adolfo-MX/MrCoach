@@ -17,7 +17,7 @@ const getById = async (id) => {
   
   
 const create = async (userData) => {
-    const {userName, lastName, password, age, birthDay, gender, email, mobileNumber, state, city, avatar} = userData;
+    const {userName, firstName, lastName, password, age, birthDay, gender, email, mobileNumber, state, city, avatar} = userData;
     const uuid = MUUID.v1();
     const today = new Date();
     const account = 1;
@@ -27,6 +27,7 @@ const create = async (userData) => {
     const user = new User.model({
         uuid,
         userName,
+        firstName,
         lastName,
         password: hash,
         age,
@@ -57,6 +58,7 @@ const authenticate = async (user, password) => {
 const updateUser = async (id, userData) => {
   
     const {userName, 
+           firstName,
            lastName, 
            password, 
            age, 
@@ -70,7 +72,8 @@ const updateUser = async (id, userData) => {
   
     const hash = await encrypt.hashPassword(password);
   
-    return await User.model.findByIdAndUpdate(id, {userName, 
+    return await User.model.findByIdAndUpdate(id, {userName,
+        firstName, 
         lastName, 
         password: hash, 
         age, 

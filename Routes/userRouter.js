@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router()
-const users = require("./usecases/users");
+const users = require("../usescases/users");
 
 router.get("/", async (req, res, next) => {
     try {
@@ -15,18 +15,22 @@ router.get("/", async (req, res, next) => {
     };
 });
 
+router.post ("/", 
+async (request, response, next)=> {
+  try { 
+    const userData= request.body; 
+    const userCreated= await users.create(userData);
 
-router.post("/", (req, res) => {
-    const body = req.body;
-
-    res.status(201).json({
-        ok: true,
-        message: "User created successfully",
-        payload: {
-            body,
-        },
+    response.status(201).json({ 
+      ok:true,
+      message: "New user created", 
+      payload: userCreated,
+      
     });
-});
+  }catch (error){
+    next(error);
+  }
+}); 
 
 
 router.patch("/:id", async (req, res) => {

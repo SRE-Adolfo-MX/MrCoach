@@ -1,17 +1,13 @@
+const { json } = require("express");
 const mongoose = require("mongoose"); 
 const Schema = mongoose.Schema;
 
 const schema= new Schema({
     uuid:{
         type: String,
-        maxlength:10,
+        maxlength:150,
         minlength: 1,
 
-    },
-    idRoutine: {
-        type:String,
-         maxlength:10,
-        minlength: 1,
     },
     title: {
         type:String,
@@ -20,23 +16,25 @@ const schema= new Schema({
     },
     idUser: {
         type:String,
-         maxlength:10,
+         maxlength:50,
         minlength: 1,
     },
     idCoach: {
         type:String,
-         maxlength:10,
+         maxlength:50,
         minlength: 1,
     },
     dateCreation: {
-         timestamp: true
+         type:Date,
 
     },
     initialDate: {
-       timestamp: true
+       type:String,
+       maxlength: 250,
     },
     finishDate: {
-        timestamp: true
+        type:String,
+        maxlength: 250,
     },
     typeRoutine: {
       type:String,
@@ -52,34 +50,11 @@ const schema= new Schema({
          maxlength:250,
         
     },
-    iconType: {
-        type:String,
-         maxlength:250,
-        minlength: 1,
-    },
-    laps: {
-        type:Number,
-        maxlength:2,
-
-    },
-    repetitions: {
-       type:Number,
-        maxlength:2,
-    },
-    rest: {
-        type:Number,
-         maxlength:2,
-
-    },
-    link: {
-        type:Number,
-          maxlength:250,
-        minlength: 1,
-
+    exercise: {
+        type:JSON,
     },
     cardio: {
-        type:String,
-         maxlength:250,
+        type:JSON,
 
     },
     comments: {
@@ -87,7 +62,9 @@ const schema= new Schema({
          maxlength:150,
 
     },
-    
+    status: {
+        type:Boolean,
+    },
 }); 
 
 module.exports= {

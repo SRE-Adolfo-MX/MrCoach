@@ -71,23 +71,5 @@ router.get(
   });
 
 
-  router.delete("/:id", async (req, res, next) => {
-    const { id } = req.params;
-
-      try {
-        const routineDeleted = await routines.deleteByStatus(id);
-        
-        res.status(201).json({
-          ok: true,
-          message: "Routine Deleted",
-          payload: {
-            product: routineDeleted,
-          },
-        });
-      } catch (error) {
-        next(error);
-      }
-  });
-
 
 module.exports = router;

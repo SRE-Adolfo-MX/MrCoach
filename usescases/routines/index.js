@@ -21,11 +21,7 @@ const create = async (routineData) => {
             title,
             idUser,
             idCoach,
-            dateCreation,
-            initialDate,
-            finishDate,
             typeRoutine,
-            daysTraining,
             daysTrained,
             exercise,
             iconType,
@@ -36,13 +32,41 @@ const create = async (routineData) => {
             cardio,
             comments
             } = routineData;
-
+    
     const uuid = MUUID.v1();
     const today = new Date();
     const status = true;
+    const daysTraining = [];
 
+    function sumarDias(day, days){
+      days = parseInt(days);
+      var i = 1;
+      day = new Date();
+      day.setDate(day.getDate() + 1);
+      initialDate = day;
+
+      while (i < days) {
+        day = new Date();
+        day.setDate(day.getDate() + i);
+        daysTraining.push(day)
+        i = i + 1;
+      }
+      day = new Date();
+      days = days - 1;
+      day.setDate(day.getDate() + days);
+      finishDate = day;
+    }
+
+    if (typeRoutine === "15 Days"){
+      const days = 15;
+      sumarDias(today, days);
+    } else {
+      const days = 30;
+      sumarDias(today, days);
+    }
+
+    
     const routine = new Routines.model({
-        uuid,
         title,
         idUser,
         idCoach,
@@ -94,7 +118,7 @@ const update = async (id, routineData) => {
   };
  
  
-const deleteByStatus = async (id) => {
+const updateByStatus = async (id) => {
         const status = false;
 
     return await Routines.model.findByIdAndUpdate(id, {status}).exec();
@@ -107,5 +131,5 @@ module.exports = {
     create,
     getById,
     update,
-    deleteByStatus,
+    updateByStatus,
 };

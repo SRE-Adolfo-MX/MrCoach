@@ -3,12 +3,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schema= new Schema({
-    uuid:{
-        type: String,
-        maxlength:150,
-        minlength: 1,
-
-    },
     title: {
         type:String,
          maxlength:40,
@@ -26,15 +20,12 @@ const schema= new Schema({
     },
     dateCreation: {
          type:Date,
-
     },
     initialDate: {
-       type:String,
-       maxlength: 250,
+        type:Date,
     },
     finishDate: {
-        type:String,
-        maxlength: 250,
+        type:Date,
     },
     typeRoutine: {
       type:String,
@@ -42,13 +33,10 @@ const schema= new Schema({
         minlength: 1,
     },
     daysTraining: {
-        type:String,
-         maxlength:250,
+        type:JSON,
     },
     daysTrained: {
-        type:String,
-         maxlength:250,
-        
+        type:JSON,        
     },
     exercise: {
         type:JSON,

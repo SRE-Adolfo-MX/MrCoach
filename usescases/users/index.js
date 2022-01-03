@@ -4,7 +4,7 @@ const encrypt = require("../../lib/encrypt");
 const MUUID = require("uuid-mongodb");
 
 const get = async () => {
-    const allUsersDetail = await userDetail.find({}).exec();
+    const allUsersDetail = await userDetail.find({}).sort({createdAt:-1}).exec();
     return allUsersDetail;
 };
 
@@ -17,7 +17,7 @@ const getById = async (id) => {
   
   
 const create = async (userData) => {
-    const {userName, firstName, lastName, password, age, birthDay, gender, email, mobileNumber, state, city, avatar} = userData;
+    const {userName, firstName, lastName, password, age, birthDate, gender, email, mobileNumber, state, city, avatar} = userData;
     const uuid = MUUID.v1();
     const today = new Date();
     const account = 1;
@@ -31,7 +31,7 @@ const create = async (userData) => {
         lastName,
         password: hash,
         age,
-        birthDay,
+        birthDate,
         gender,
         email,
         initialTime: today,
@@ -68,7 +68,7 @@ const updateUser = async (id, userData) => {
            mobileNumber, 
            state, 
            city, 
-           avatar}= userData;
+           avatar} = userData;
   
     const hash = await encrypt.hashPassword(password);
   
@@ -88,7 +88,7 @@ const updateUser = async (id, userData) => {
 
 const disableUser = async (id) => {
   
-      const status=false
+      const status = false
       //const hash = await encrypt.hashPassword(password);
   
     return await User.model.findByIdAndUpdate(id, {status}).exec();  

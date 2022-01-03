@@ -4,54 +4,53 @@ const Schema = mongoose.Schema;
 
 const schema= new Schema({
     title: {
-        type:String,
-         maxlength:40,
+        type: String,
+        maxlength: 40,
         minlength: 1,
     },
     idUser: {
-        type:String,
-         maxlength:50,
+        type: String,
+        maxlength: 50,
         minlength: 1,
     },
     idCoach: {
-        type:String,
-         maxlength:50,
+        type: String,
+        maxlength: 50,
         minlength: 1,
     },
     dateCreation: {
-         type:Date,
+        type: Date,
     },
     initialDate: {
-        type:Date,
+        type: Date,
     },
     finishDate: {
-        type:Date,
+        type: Date,
     },
     typeRoutine: {
-      type:String,
-         maxlength:10,
+      type: String,
+        maxlength: 10,
         minlength: 1,
     },
     daysTraining: {
-        type:JSON,
+        type: JSON,
     },
     daysTrained: {
-        type:JSON,        
+        type: JSON,        
     },
     exercise: {
-        type:JSON,
+        type: JSON,
     },
     cardio: {
-        type:JSON,
+        type: JSON,
 
     },
     comments: {
-        type:String,
-         maxlength:150,
-
+        type: String,
+        maxlength: 150,
     },
     status: {
-        type:Boolean,
+        type: Boolean,
     },
 }); 
 

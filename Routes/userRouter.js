@@ -4,7 +4,7 @@ const users = require("../usescases/users");
 
 router.get("/", async (req, res, next) => {
     try {
-        const allUsers = users.get()
+        const allUsers = await users.get()
         res.json({
             ok: true,
             message: "Done!",
@@ -18,8 +18,8 @@ router.get("/", async (req, res, next) => {
 router.post ("/", 
 async (request, response, next)=> {
   try { 
-    const userData= request.body; 
-    const userCreated= await users.create(userData);
+    const userData = request.body; 
+    const userCreated = await users.create(userData);
 
     response.status(201).json({ 
       ok:true,
